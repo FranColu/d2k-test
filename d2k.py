@@ -5,7 +5,7 @@ import tensorflow as tf
 from functools import reduce, partial
 import enum
 
-class D2k:
+class D2ktest:
   
   def __init__(self):
     self.data = []
