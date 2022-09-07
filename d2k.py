@@ -74,15 +74,13 @@ class Lambda extends tf.layers.Layer {
   constructor() {
     super({})
   }
-
+ # Se il layer custom deve supportare la serializzazione, è necessaria l'implementazione di 'className' static getter 
   static get className() {
     return 'Lambda';
   }
 
 }
-
-tf.serialization.SerializationMap.register(Lambda);
-
+tf.serialization.registerClass(Lambda); #Necessario per la serializzazione
 ; 
 
 class Layers:
