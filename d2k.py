@@ -70,6 +70,21 @@ class D2k:
   #
 #
 
+class Lambda extends tf.layers.Layer {
+  constructor() {
+    super({})
+  }
+
+  static get className() {
+    return 'Lambda';
+  }
+
+}
+
+tf.serialization.SerializationMap.register(Lambda);
+
+; 
+
 class Layers:
   
   class Type(enum.Enum):
