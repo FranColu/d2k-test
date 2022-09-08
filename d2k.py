@@ -69,7 +69,7 @@ class D2k:
     return self
   #
 #
-
+/**
 class Custom extends tf.layers.Layer {
   constructor() {
     super({})
@@ -82,7 +82,7 @@ class Custom extends tf.layers.Layer {
 }
 tf.serialization.registerClass(Lambda); #Necessario per la serializzazione
 ; 
-
+*/
 class Layers:
   
   class Type(enum.Enum):
