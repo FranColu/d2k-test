@@ -79,7 +79,7 @@ class D2k:
  # }
 
  # }
- # tf.serialization.registerClass(Lambda);     #Necessario per la serializzazione
+ # tf.serialization.registerClass(Custom);     #Necessario per la serializzazione
 
 class Layers:
   
