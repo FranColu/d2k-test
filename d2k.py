@@ -69,20 +69,18 @@ class D2k:
     return self
   #
 #
-/**
-class Custom extends tf.layers.Layer {
-  constructor() {
-    super({})
-  }
- # Se il layer custom deve supportare la serializzazione, è necessaria l'implementazione di 'className' static getter 
-  static get className() {
-    return 'Lambda';
-  }
+ # class Custom extends tf.layers.Layer {
+ #  constructor() {
+ #   super({})
+ # }
+ # 
+ # static get className() {   # Se il layer custom deve supportare la serializzazione, è necessaria l'implementazione di 'className' static getter 
+ #   return 'Lambda';
+ # }
 
-}
-tf.serialization.registerClass(Lambda); #Necessario per la serializzazione
-; 
-*/
+ # }
+ # tf.serialization.registerClass(Lambda);     #Necessario per la serializzazione
+
 class Layers:
   
   class Type(enum.Enum):
