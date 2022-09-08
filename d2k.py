@@ -70,7 +70,7 @@ class D2k:
   #
 #
 
-class Lambda extends tf.layers.Layer {
+class Custom extends tf.layers.Layer {
   constructor() {
     super({})
   }
