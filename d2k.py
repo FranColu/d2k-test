@@ -69,6 +69,15 @@ class D2k:
     return self
   #
 #
+
+class CustomReLU(layers.Layer):
+  def __init__(self):
+    super(CustomReLU, self).__init__()
+  
+  def call(self, x):
+    return tf.math.maximum(x,0)
+
+
  # class Custom extends tf.layers.Layer {
  #  constructor() {
  #   super({})
