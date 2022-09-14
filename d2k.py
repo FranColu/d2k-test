@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf 
 from functools import reduce, partial
 import enum
+from tensorflow.keras import layers
 
 class D2k:
   
