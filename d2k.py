@@ -71,12 +71,33 @@ class D2k:
   #
 #
 
-class CustomReLU(layers.Layer):
-  def __init__(self):
-    super(CustomReLU, self).__init__()
+class CustomLayer(layers.Layer):
+  def __init__(self, **kwargs):
+    super(CustomLayer, self).__init__(**kwargs)
   
   def call(self, x):
     return tf.math.maximum(x,0)
+  
+  def get_config(self):
+      config = super(CustomLayer, self).get_config()
+      config.update({"units": self.units})
+      return config
+      
+  def from_config(cls, config):
+    return cls(**config)
+  
+layer = CustomLayer(5)
+layer.var.assign(2)
+
+serialized_layer = keras.layers.serialize(layer)
+new_layer = keras.layers.deserialize(
+    serialized_layer, custom_objects={"CustomLayer": CustomLayer}
+)
+
+@keras.utils.register_keras_serializable('my_package')
+
+assert keras.utils.get_registered_object('my_package>CustomLayer') == CustomLayer
+assert keras.utils.get_registered_name(CustomLayer) == 'my_package>CustomLayer'
 
 
  # class Custom extends tf.layers.Layer {
