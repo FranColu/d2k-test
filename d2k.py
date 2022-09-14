@@ -269,7 +269,7 @@ class Layers:
             )
           ) for t in ts]
         #
-        inputs = tf.keras.layers.Lambda(zero_pad_tensors)(inputs)
+        inputs = tf.keras.layers.CustomLayer(zero_pad_tensors)(inputs)
       
       return [Layers.add_tensor_type(
         tf.keras.layers.Add()(inputs), 
@@ -315,9 +315,7 @@ class Layers:
           [int(attrib['padding_x'])]*2, 
           [0]*2
         ]
-        res += [tf.keras.layers.Lambda(
-          lambda t: tf.pad(t, padding, 'SYMMETRIC')
-        )(last_tensor)]
+        res += [tf.keras.layers.CustomLayer()(last_tensor)]
         last_tensor = res[0]
       
       return [Layers.add_tensor_type(
@@ -356,9 +354,7 @@ class Layers:
           [int(attrib['padding_x'])]*2, 
           [0]*2
         ]
-        res += [tf.keras.layers.Lambda(
-          lambda t: tf.pad(t, padding, 'SYMMETRIC')
-        )(last_tensor)]
+        res += [tf.keras.layers.CustomLayer()(last_tensor)]
         last_tensor = res[0]
       
       return [Layers.add_tensor_type(
