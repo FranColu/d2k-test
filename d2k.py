@@ -86,8 +86,8 @@ class CustomLayer(layers.Layer):
   def from_config(cls, config):
     return cls(**config)
   
-layer = CustomLayer(5)
-layer.var.assign(2)
+layer = CustomLayer()
+layer.var.assign()
 
 serialized_layer = keras.layers.serialize(layer)
 new_layer = keras.layers.deserialize(
