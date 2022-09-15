@@ -74,18 +74,20 @@ class D2k:
 #
 
 class CustomLayer(layers.Layer):
-  def __init__(self, x, **kwargs):
+  def __init__(self, x, name=None, **kwargs):
+    super(CustomLayer, self).__init__(name=name)
+    self.k = k
     super(CustomLayer, self).__init__(**kwargs)
   
-  def call(self, x):
-    return tf.math.maximum(x,0)
+  def call(self, input):
+    return tf.math.maximum(input,0)
   
   def get_config(self):
       config = super(CustomLayer, self).get_config()
       config.update({"x": self.x})
       return config
   
-layer = CustomLayer(5)
+layer = CustomLayer(5, name='custom_layer')
 
 serialized_layer = keras.layers.serialize(layer)
 new_layer = keras.layers.deserialize(
