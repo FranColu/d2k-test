@@ -96,6 +96,9 @@ new_layer = keras.layers.deserialize(
 
 @keras.utils.register_keras_serializable('my_package')
 
+assert keras.utils.get_registered_object('my_package>CustomLayer') == CustomLayer
+assert keras.utils.get_registered_name(CustomLayer) == 'my_package>CustomLayer'
+
 
  # class Custom extends tf.layers.Layer {
  #  constructor() {
