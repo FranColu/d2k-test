@@ -81,7 +81,6 @@ class CustomLayer(layers.Layer):
   
   def get_config(self):
       config = super(CustomLayer, self).get_config()
-      config.update({"units": self.units})
       return config
       
   def from_config(cls, config):
