@@ -76,7 +76,7 @@ class D2k:
 class CustomLayer(layers.Layer):
   def __init__(self, x, name=None, **kwargs):
     super(CustomLayer, self).__init__(name=name)
-    self.k = k
+    self.x = x
     super(CustomLayer, self).__init__(**kwargs)
   
   def call(self, input):
