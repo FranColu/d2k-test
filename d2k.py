@@ -85,7 +85,7 @@ class CustomLayer(layers.Layer):
       config.update({"x": self.x})
       return config
   
-layer = CustomLayer()
+layer = CustomLayer(5)
 
 serialized_layer = keras.layers.serialize(layer)
 new_layer = keras.layers.deserialize(
