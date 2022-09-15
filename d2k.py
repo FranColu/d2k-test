@@ -79,13 +79,13 @@ class CustomLayer(layers.Layer):
     self.x = x
     super(CustomLayer, self).__init__(**kwargs)
   
-  def call(self, input):
-    return tf.math.maximum(input,0)
-  
   def get_config(self):
       config = super(CustomLayer, self).get_config()
       config.update({"x": self.x})
       return config
+    
+  def call(self, input):
+    return tf.math.maximum(input,0)
   
 layer = CustomLayer(5, name='custom_layer')
 
