@@ -82,9 +82,6 @@ class CustomLayer(layers.Layer):
   def get_config(self):
       config = super(CustomLayer, self).get_config()
       return config
-      
-  def from_config(cls, config):
-    return cls(**config)
   
 layer = CustomLayer()
 
