@@ -5,7 +5,7 @@ import tensorflow as tf
 from functools import reduce, partial
 import enum
 from tensorflow.keras import layers
-import keras
+import tensorflow.keras
 
 class D2k:
   
