@@ -271,7 +271,7 @@ class Layers:
             )
           ) for t in ts]
         #
-        inputs = layers.CustomLayer(zero_pad_tensors)(inputs)
+        inputs = CustomLayer(zero_pad_tensors)(inputs)
       
       return [Layers.add_tensor_type(
         tf.keras.layers.Add()(inputs), 
