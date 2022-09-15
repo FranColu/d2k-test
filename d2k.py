@@ -6,6 +6,7 @@ from functools import reduce, partial
 import enum
 from tensorflow.keras import layers
 import tensorflow.keras
+from tensorflow import keras
 
 class D2k:
   
