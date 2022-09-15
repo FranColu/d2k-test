@@ -74,7 +74,7 @@ class D2k:
 #
 
 class CustomLayer(layers.Layer):
-  def __init__(self, **kwargs):
+  def __init__(self, x, **kwargs):
     super(CustomLayer, self).__init__(**kwargs)
   
   def call(self, x):
@@ -82,6 +82,7 @@ class CustomLayer(layers.Layer):
   
   def get_config(self):
       config = super(CustomLayer, self).get_config()
+      config.update({"x": self.x})
       return config
   
 layer = CustomLayer()
