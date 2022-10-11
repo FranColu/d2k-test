@@ -73,7 +73,7 @@ class D2k:
   #
 #
 
-class CustomLayer(layers.Layer):
+class Layer(layers.Layer):
   def __init__(self, x, name=None, **kwargs):
     super(CustomLayer, self).__init__(name=name)
     self.x = x
@@ -102,17 +102,6 @@ keras.utils.get_registered_object('my_package>CustomLayer') == CustomLayer
 keras.utils.get_registered_name(CustomLayer) == 'my_package>CustomLayer'
 
 
- # class Custom extends tf.layers.Layer {
- #  constructor() {
- #   super({})
- # }
- # 
- # static get className() {   # Se il layer custom deve supportare la serializzazione, è necessaria l'implementazione di 'className' static getter 
- #   return 'Lambda';
- # }
-
- # }
- # tf.serialization.registerClass(Custom);     #Necessario per la serializzazione
 
 class Layers:
   
@@ -271,7 +260,7 @@ class Layers:
             )
           ) for t in ts]
         #
-        inputs = CustomLayer(zero_pad_tensors)(inputs)
+        inputs = tf.keras.layers.Lambda(zero_pad_tensors)(inputs)
       
       return [Layers.add_tensor_type(
         tf.keras.layers.Add()(inputs), 
@@ -317,7 +306,9 @@ class Layers:
           [int(attrib['padding_x'])]*2, 
           [0]*2
         ]
-        res += [tf.keras.layers.CustomLayer()(last_tensor)]
+        res += [tf.keras.layers.Lambda(
+          lambda t: tf.pad(t, padding, 'SYMMETRIC')
+        )(last_tensor)]
         last_tensor = res[0]
       
       return [Layers.add_tensor_type(
@@ -356,7 +347,9 @@ class Layers:
           [int(attrib['padding_x'])]*2, 
           [0]*2
         ]
-        res += [tf.keras.layers.CustomLayer()(last_tensor)]
+        res += [tf.keras.layers.Lambda(
+          lambda t: tf.pad(t, padding, 'SYMMETRIC')
+        )(last_tensor)]
         last_tensor = res[0]
       
       return [Layers.add_tensor_type(
